@@ -1,16 +1,13 @@
 
-FROM openjdk:17-jdk-slim
+FROM openjdk:17.0.1-jdk-slim
 
-# Set working directory
-WORKDIR /app
+ARG JAR_FILE=target/*.jar
 
 # Copy jar file
-ARG JAR_FILE=target/*.jar
 COPY ${JAR_FILE} app.jar
 
-# Expose application port
-EXPOSE 8089
-
 # Run the application
-ENTRYPOINT ["java","-jar","app.jar"]
+ENTRYPOINT ["java","-jar","/app.jar"]
 
+# Expose application port
+EXPOSE 8089 
